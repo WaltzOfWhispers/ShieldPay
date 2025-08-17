@@ -29,13 +29,13 @@ async function settleAleoTransaction(
 
   // Create a new NetworkClient, KeyProvider, and RecordProvider
   const networkClient = new AleoNetworkClient("https://api.explorer.provable.com/v1");
-  networkClient.setAccount(account);
-  const unspentRrecords = networkClient.findRecords(
-    10058580, // Start block height
-    10058581, // End block height
-    true, // Find both spent and unspent records.
-    ["credits.aleo"],
-  );
+//   networkClient.setAccount(account);
+//   const unspentRecords = networkClient.findRecords(
+//     10064512, // Start block height
+//     10064513, // End block height
+//     true, // Find both spent and unspent records.
+//     ["credits.aleo"],
+//   );
   const keyProvider = new AleoKeyProvider();
   keyProvider.useCache(true);
   
@@ -44,8 +44,8 @@ async function settleAleoTransaction(
   
   const recordProvider = new NetworkRecordProvider(account, networkClient);
   // Create a new BlockHeightSearch
-  // const params = new BlockHeightSearch(10058580, 10058590);
-  // const record = await recordProvider.findCreditsRecord(1000, true, [], params);
+  const params = new BlockHeightSearch(10064512, 10064513);
+  const record = await recordProvider.findCreditsRecord(amount, true, [], params);
 
   // Create program manager using the KeyProvider and NetworkProvider
   const programManager = new ProgramManager("https://api.explorer.provable.com/v1", keyProvider, recordProvider);
@@ -63,7 +63,9 @@ async function settleAleoTransaction(
     payTo,     // The address of the recipient
     "private", // The transfer type
     0.1,       // The fee amount
-    false      // Indicates whether or not the fee will be private
+    false,      // Indicates whether or not the fee will be private
+    {},
+    record.toString()
   );
 
   // Broadcast the transaction to the Aleo network
