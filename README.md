@@ -1,10 +1,10 @@
 # ShieldPay
 
-A decentralized payment protocol implementation that enables secure, on-chain payments using the x402 Payment Protocol on the Aleo blockchain. ShieldPay provides middleware for Express.js applications to seamlessly integrate cryptocurrency payments with API access control.
+A privacy-first decentralized payment protocol implementation that enables secure, private on-chain payments using the x402 Payment Protocol on the Aleo blockchain. ShieldPay provides middleware for Express.js applications to seamlessly integrate cryptocurrency payments with API access control and features a complete Model Context Protocol (MCP) server implementation for AI and external tool integration.
 
 ## Overview
 
-ShieldPay combines the power of blockchain payments with traditional web APIs, allowing developers to monetize their services through microtransactions on the Aleo network. The system enforces payment requirements before granting access to protected endpoints, creating a pay-per-use model for API services.
+ShieldPay combines the power of privacy-preserving blockchain payments with traditional web APIs, allowing developers to monetize their services through private microtransactions on the Aleo network. The system enforces payment requirements before granting access to protected endpoints, creating a pay-per-use model for API services while maintaining complete transaction privacy.
 
 ## Key Features
 
