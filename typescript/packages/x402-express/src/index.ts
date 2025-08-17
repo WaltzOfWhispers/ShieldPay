@@ -27,8 +27,6 @@ async function settleAleoTransaction(
   // Create an account with the private key
   const account = new Account({privateKey: process.env.PRIVATE_KEY});
 
-  // Create a new NetworkClient, KeyProvider, and RecordProvider
-  const networkClient = new AleoNetworkClient("https://api.explorer.provable.com/v1");
 //   networkClient.setAccount(account);
 //   const unspentRecords = networkClient.findRecords(
 //     10064512, // Start block height
@@ -42,9 +40,11 @@ async function settleAleoTransaction(
   // Pre-load transfer keys for private transactions
   const [transferPrivateProvingKey, transferPrivateVerifyingKey] = await keyProvider.transferKeys("private");
   
+  // Create a new NetworkClient, KeyProvider, and RecordProvider
+  const networkClient = new AleoNetworkClient("https://api.explorer.provable.com/v1");
   const recordProvider = new NetworkRecordProvider(account, networkClient);
   // Create a new BlockHeightSearch
-  const params = new BlockHeightSearch(10064512, 10064513);
+  const params = new BlockHeightSearch(10065484, 10065485);
   const record = await recordProvider.findCreditsRecord(amount, true, [], params);
 
   // Create program manager using the KeyProvider and NetworkProvider
